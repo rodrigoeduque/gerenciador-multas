@@ -1,7 +1,6 @@
 package br.com.rodrigoeduque.gerenciadorMultas.controller.dto;
 
 import br.com.rodrigoeduque.gerenciadorMultas.model.Cliente;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
@@ -25,9 +24,8 @@ public class ClienteRequest {
     @NotBlank
     private String rg;
 
-    @Column(nullable = false, length = 200)
     @NotBlank
-    @Length(min = 30, max = 200)
+    @Length(min = 15, max = 200)
     private String endereco;
 
     @NotBlank
@@ -35,7 +33,7 @@ public class ClienteRequest {
     private String email;
 
     @NotBlank
-    @Length(min = 14, max = 14)
+    @Length(max = 14)
     private String telefone;
 
     public ClienteRequest(String nome, String sobrenome, String cpf, String rg, String endereco, String email, String telefone) {
@@ -52,8 +50,8 @@ public class ClienteRequest {
     public ClienteRequest() {
     }
 
-    public Cliente toCliente(){
-        return new Cliente(nome,sobrenome,cpf,rg,endereco,email,telefone);
+    public Cliente toCliente() {
+        return new Cliente(nome, sobrenome, cpf, rg, endereco, email, telefone);
     }
 
     public String getNome() {
